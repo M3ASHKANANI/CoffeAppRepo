@@ -2,7 +2,8 @@
 
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import { Container, Header, Title, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import { Container, Header, Title, Button, Left, Right, Body, Icon, Text, } from 'native-base';
+import { NativeRouter, Route, Link, Switch } from 'react-router-native'
 
 export default class MyHeader extends Component {
     render() {
@@ -10,20 +11,20 @@ export default class MyHeader extends Component {
       <Header style={{backgroundColor: "transparent"}} >
 
         <Left>
-            <Button transparent>
+            <Link transparent component={Button} to='/'>
                 <Icon style={styles.backicon} name='arrow-back' />
-            </Button>
+            </Link>
         </Left>
 
         <Body>
         <Title style={styles.header}><Text>Coffe App</Text></Title>
         </Body>
         <Right>
-            <Button transparent>
+            <Link full transparent component={Button} to="/CoffeCart">
                 <Text style={styles.text}>3{" "}
                 <Icon name='beer' style={styles.icon} />
                 </Text>
-            </Button>
+            </Link>
         </Right>
         </Header>
       )

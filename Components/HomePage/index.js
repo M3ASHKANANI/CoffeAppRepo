@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, ImageBackground } from 'react-native';
-import { Container, Content, Footer, FooterTab, Button, Icon, Text } from 'native-base';
+import { Container, Content, Footer, FooterTab, Button, Icon, Text, } from 'native-base';
+import { NativeRouter, Route, Link, Switch } from 'react-router-native'
 import CoffeList from '../CoffeList';
 import CoffeDetail from '../CoffeDetail';
 import CoffeCart from '../CoffeCart';
@@ -15,16 +16,22 @@ export default class HomePage extends Component {
           <Container>
             <MyHeader />
             <Content>
-              <CoffeCart />
+                <Switch>
+                  <Route exact path="/" component={CoffeList} />
+                  <Route path="/CoffeDetail" render = {
+                    ()=> <CoffeDetail/>} />
+                    <Route path="/CoffeCart" render = {
+                    ()=> <CoffeCart/>} />
+                </Switch>
             </Content>
             <Footer style={{backgroundColor: "transparent"}}>
               <FooterTab>
-                <Button full>
+                  <Link full transparent component={Button} to="/CoffeCart" >
                   <Text style={styles.footerbutton}>
+                  Cart
                     <Icon name='cart' style={styles.footericon} />
-                     Cart
                   </Text>
-                </Button>
+                  </Link>
               </FooterTab>
             </Footer>
           </Container>

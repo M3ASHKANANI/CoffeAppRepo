@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ImageBackground, StyleSheet, View, ListView } from 'react-native';
 import coffee from '../../images/coffee.jpg';
+import { NativeRouter, Route, Link, Switch } from 'react-router-native'
 import list from './list';
 import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, List, ListItem, } from 'native-base';
 export default class CoffeList extends Component {
@@ -20,6 +21,7 @@ export default class CoffeList extends Component {
                 <ImageBackground  source={data.background} style={{height: 180, width: null, flex: 1}} key={data.name + "-" + index} >
                     <ListItem style={{ backgroundColor: "transparent", borderTopWidth: 0,borderRightWidth: 0,borderLeftWidth: 0,borderBottomWidth: 0 }}>
                         <Card style={{ backgroundColor: "transparent", borderTopWidth: 0,borderRightWidth: 0,borderLeftWidth: 0,borderBottomWidth: 0 }}>
+                                <Link  transparent component={Button} to="/CoffeDetail" >
                             <CardItem style={{ backgroundColor: "transparent" }}>
                                 <Left>
                                     <Thumbnail bordered source={data.image} />
@@ -29,6 +31,7 @@ export default class CoffeList extends Component {
                                     </Body>
                                 </Left>
                             </CardItem>
+                                    </Link>
                         </Card>
                         <View style={styles.divider}></View>
                     </ListItem>
