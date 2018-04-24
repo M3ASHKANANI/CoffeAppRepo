@@ -28,7 +28,9 @@ export default class CoffeDetail extends Component {
                 background: starbucks2,
                 lat: 29.32825632,
                 lng: 47.9258696
-            }
+            },
+            drink: 0,
+            option: 0,
         };
     }
 

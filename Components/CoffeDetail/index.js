@@ -22,6 +22,34 @@ export default class CoffeDetail extends Component {
 
         };
     }
+    componentWillMount(){
+        this.setState({
+            detail: this.props.CoffeShop.detail
+        })
+    }
+            addCoffe(){
+                if (store.shop.name === store.detail.name || store.shop.name === "") {
+                  let current = store.current
+                  let coffe = {
+                      drink: this.state.drink,
+                      option: this.state.option,
+                      quantity: 1
+                  }
+                  if (current.length > 0) { 
+                  if (current.findIndex((item) => item.drink === coffe.drink && item.option === coffe.option) === -1) {
+                      current.push(coffe)
+                  } else {
+                      let index = current.findIndex((item) => item.drink === coffe.drink && item.option === coffe.option)
+                      current[index].quantity += 1
+                      }
+                  }
+                   else {
+                      current.push(coffe)
+                  }
+                  store.current = current
+                  store.shop = store.detail
+                  }
+              }
   render() {
     return (
         <List>

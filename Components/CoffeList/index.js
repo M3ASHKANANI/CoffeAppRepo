@@ -12,17 +12,20 @@ export default class CoffeList extends Component {
           listViewData: list,
         };
     }
+    setDetail(data){
+        this.props.CoffeShop.detail = data
+    }
   render() {
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
     return (
         <List
             dataSource={this.ds.cloneWithRows(this.state.listViewData)}
             renderRow={(data,index) =>
-            <Link  transparent component={Button} to="/CoffeDetail" >
+            <Link  transparent component={Button} to="/CoffeDetail" onPress={() => this.setDetail(data)} >
                 <ImageBackground  source={data.background} style={{height: 180, width: null, flex: 1}} key={data.name + "-" + index} >
                     <ListItem style={{ backgroundColor: "transparent", borderTopWidth: 0,borderRightWidth: 0,borderLeftWidth: 0,borderBottomWidth: 0 }}>
                         <Card style={{ backgroundColor: "transparent", borderTopWidth: 0,borderRightWidth: 0,borderLeftWidth: 0,borderBottomWidth: 0 }}>
-                                <Link  transparent component={Button} to="/CoffeDetail" >
+                                <Link  transparent component={Button} to="/CoffeDetail" onPress={() => this.setDetail(data)} >
                             <CardItem style={{ backgroundColor: "transparent" }}>
                                 <Left>
                                     <Thumbnail bordered source={data.image} />

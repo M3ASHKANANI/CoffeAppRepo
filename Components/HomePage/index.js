@@ -5,9 +5,9 @@ import { NativeRouter, Route, Link, Switch } from 'react-router-native'
 import CoffeList from '../CoffeList';
 import CoffeDetail from '../CoffeDetail';
 import CoffeCart from '../CoffeCart';
-
 import background from '../../images/10.jpg';
 import MyHeader from '../MyHeader';
+import CoffeShop from '../../stores/CoffeShop';
 
 export default class HomePage extends Component {
   render() {
@@ -17,11 +17,12 @@ export default class HomePage extends Component {
             <MyHeader />
             <Content>
                 <Switch>
-                  <Route exact path="/" component={CoffeList} />
+                  <Route exact path="/"  render = {
+                    props => <CoffeList {...props} CoffeShop={CoffeShop}/>} />
                   <Route path="/CoffeDetail" render = {
-                    ()=> <CoffeDetail/>} />
+                    props => <CoffeDetail {...props} CoffeShop={CoffeShop}/>} />
                     <Route path="/CoffeCart" render = {
-                    ()=> <CoffeCart/>} />
+                    props => <CoffeCart {...props}/>} />
                 </Switch>
             </Content>
             <Footer style={{backgroundColor: "transparent"}}>
