@@ -18,6 +18,7 @@ export default class CoffeList extends Component {
         <List
             dataSource={this.ds.cloneWithRows(this.state.listViewData)}
             renderRow={(data,index) =>
+            <Link  transparent component={Button} to="/CoffeDetail" >
                 <ImageBackground  source={data.background} style={{height: 180, width: null, flex: 1}} key={data.name + "-" + index} >
                     <ListItem style={{ backgroundColor: "transparent", borderTopWidth: 0,borderRightWidth: 0,borderLeftWidth: 0,borderBottomWidth: 0 }}>
                         <Card style={{ backgroundColor: "transparent", borderTopWidth: 0,borderRightWidth: 0,borderLeftWidth: 0,borderBottomWidth: 0 }}>
@@ -35,7 +36,8 @@ export default class CoffeList extends Component {
                         </Card>
                         <View style={styles.divider}></View>
                     </ListItem>
-                </ImageBackground>}
+                </ImageBackground>
+        </Link>}
             renderLeftHiddenRow={data =>
                 <Button full onPress={() => alert('HEY!')}>
                 <Icon active name="navigate" />
