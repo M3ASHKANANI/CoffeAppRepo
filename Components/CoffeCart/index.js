@@ -4,7 +4,10 @@ import { Link } from 'react-router-native'
 import { Thumbnail, Text, Left, Body, Right, List, ListItem } from 'native-base';
 import starbucks from '../../images/starbucks.png';
 import starbucks2 from '../../images/starbucks.jpg';
-export default class CoffeDetail extends Component {
+import { observer } from "mobx-react";
+import CoffeShop from '../../stores/CoffeShop'
+
+export default observer( class CoffeDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -51,12 +54,13 @@ export default class CoffeDetail extends Component {
         )
     }
     render() {
+      console.log(CoffeShop.orders);
         return (
             <List>
                 <ListItem  style={styles.top}>
                     <Left>
                         <Text style={styles.text}>
-                            {this.state.shop.name + '\n'} 
+                            {this.state.shop.name + '\n'}
                             <Text note>{this.state.shop.location}</Text>
                         </Text>
                     </Left>
@@ -65,13 +69,13 @@ export default class CoffeDetail extends Component {
                         <Thumbnail bordered source={this.state.shop.image} />
                     </Right>
                 </ListItem>
-                {this.state.orders.map(
+                {CoffeShop.orders.map(
                 (item, index) => this.renderItem(item,index)
                 )}
             </List>
         );
     }
-}
+});
 
 const styles = StyleSheet.create({
     text: {
@@ -95,5 +99,3 @@ const styles = StyleSheet.create({
         alignSelf: "center"
     }
   });
-  
-  

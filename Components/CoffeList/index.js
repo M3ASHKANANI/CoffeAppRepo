@@ -4,7 +4,8 @@ import coffee from '../../images/coffee.jpg';
 import { NativeRouter, Route, Link, Switch } from 'react-router-native'
 import list from './list';
 import { Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, List, ListItem, } from 'native-base';
-export default class CoffeList extends Component {
+import { observer } from "mobx-react";
+export default observer ( class CoffeList extends Component {
     constructor(props) {
         super(props);
         this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -50,7 +51,7 @@ export default class CoffeList extends Component {
         />
     );
   }
-}
+});
 
 const styles = StyleSheet.create({
     text: {
@@ -62,5 +63,3 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     }
   });
-  
-  
