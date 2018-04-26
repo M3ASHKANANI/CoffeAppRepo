@@ -1,11 +1,17 @@
-
-
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Text, } from 'native-base';
 import { NativeRouter, Route, Link, Switch } from 'react-router-native'
+import CoffeDetail from '../CoffeDetail/index'
+import CoffeShop from '../../stores/CoffeShop'
 
+
+console.log(CoffeShop.orders)
 export default class MyHeader extends Component {
+    Totalquantity(){
+      let x= CoffeShop.orders;
+      console.log(x.quantity);
+    }
     render() {
       return (
       <Header style={{backgroundColor: "transparent"}} >
@@ -22,6 +28,7 @@ export default class MyHeader extends Component {
         <Right>
             <Link full transparent component={Button} to="/CoffeCart">
                 <Text style={styles.text}>3{" "}
+
                 <Icon name='beer' style={styles.icon} />
                 </Text>
             </Link>
@@ -39,7 +46,7 @@ const styles = StyleSheet.create({
     topheader: {
       backgroundColor: '#5cd6d6',
       opacity: 0,
-  
+
     },
     backicon: {
         color: 'white',
@@ -66,10 +73,10 @@ const styles = StyleSheet.create({
       fontSize: 17,
       marginTop: 10,
       opacity: 1,
-  
+
       },
       footerbutton: {
-          
+
           color: 'white',
           fontWeight: 'bold',
           fontSize: 17,
@@ -79,5 +86,3 @@ const styles = StyleSheet.create({
           opacity: 0.6,
       }
   });
-  
-  

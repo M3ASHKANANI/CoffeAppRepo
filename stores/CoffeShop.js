@@ -7,6 +7,9 @@ class CoffeShop {
         extendObservable(this, {
             list: CoffeList,
             detail: {},
+            currentCoffeShop: {
+              name: ""
+            },
             orders: [],
             getStoreByName: computed(
                 (name) => this.list.find(list => list.name == name)

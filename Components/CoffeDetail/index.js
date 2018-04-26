@@ -24,7 +24,9 @@ export default observer ( class CoffeDetail extends Component {
         })
     }
     addCoffe(){
-      // if (CoffeShop.list.name === CoffeShop.detail.name || CoffeShop.list.name === "") {
+      console.log(CoffeShop.currentCoffeShop.name);
+      console.log(CoffeShop.detail.name);
+      if (CoffeShop.currentCoffeShop.name === CoffeShop.detail.name || CoffeShop.currentCoffeShop.name === "") {
         console.log("teehee");
           let orders = CoffeShop.orders
           let coffe = {
@@ -44,9 +46,9 @@ export default observer ( class CoffeDetail extends Component {
               orders.push(coffe)
           }
           CoffeShop.orders = orders
-          CoffeShop.list = CoffeShop.detail
+          CoffeShop.currentCoffeShop = CoffeShop.detail
           }
-      // }
+      }
   render() {
     return (
         <List>
